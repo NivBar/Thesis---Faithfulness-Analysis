@@ -1,4 +1,4 @@
-# Project Faithfulness Analysis
+# Faithfulness Analysis
 
 ## Overview
 This repository contains scripts for processing, analyzing, and indexing text data using Pyserini, transformers, and other machine learning techniques.
@@ -16,7 +16,7 @@ This repository contains scripts for processing, analyzing, and indexing text da
 - **Outputs**: Indexed JSONL files in `pyserini_output_*` directories
 
 ### 3. `new_inference_1.py`
-- **Purpose**: Uses `Meta-Llama-3-8B-Instruct` for text inference and updates a CSV file.
+- **Purpose**: Uses `Meta-Llama-3-8B-Instruct` for text inference and updates a CSV file with LLaMa2 based texts.
 - **Inputs**: `part_1.csv`
 - **Outputs**: Modified CSV with text predictions
 
@@ -33,7 +33,7 @@ This repository contains scripts for processing, analyzing, and indexing text da
 ### 6. `TrueTeacher.py`
 - **Purpose**: Processes feature data and runs Pyserini retrieval with FAISS & Lucene searchers.
 - **Inputs**: `feature_data_asrc_new.csv`, `feature_data_asrc_new_F.csv`
-- **Outputs**: Enhanced CSVs with evaluation metrics
+- **Outputs**: Enhanced CSVs with faithfulness evaluation metrics
 
 ### 7. `TrueTeacher_utils.py`
 - **Purpose**: Implements retrieval functions, model initialization, and cache handling.
