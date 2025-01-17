@@ -1,0 +1,43 @@
+- bash:
+# python -m pyserini.encode \
+#   input --corpus /lv_local/home/niv.b/llama/pyserini_output_online/online_documents.jsonl \
+#         --fields text \
+#   output --embeddings /lv_local/home/niv.b/llama/pyserini_output_online  --to-faiss\
+#   encoder --encoder castorini/tct_colbert-v2-hnp-msmarco \
+#         --fields text \
+#         --batch 32 \
+#         --fp16
+# 		
+# 
+# python -m pyserini.index.lucene \
+#   --collection JsonCollection \
+#   --input /lv_local/home/niv.b/llama/pyserini_output_online \
+#   --index /lv_local/home/niv.b/llama/pyserini_output_online
+#   --generator DefaultLuceneDocumentGenerator \
+#   --threads 8 \
+#   --storePositions --storeDocvectors --storeRaw
+
+python -m pyserini.encode   
+input --corpus /lv_local/home/niv.b/llama/pyserini_output_tommy_6_max/tommy_data_4_max.jsonl         
+--fields text   output --embeddings /lv_local/home/niv.b/llama/pyserini_output_tommy_4_max  
+--to-faiss  
+encoder 
+--encoder intfloat/e5-base         
+--fields text         
+--batch 32         
+--fp16
+
+  
+python -m pyserini.index.lucene  --collection JsonCollection   --input /lv_local/home/niv.b/llama/pyserini_output_tommy_6_max_sparse --index /lv_local/home/niv.b/llama/pyserini_output_tommy_6_max_sparse --generator DefaultLuceneDocumentGenerator --threads 8 --storePositions --storeDocvectors --storeRaw
+
+
+-template:
+{
+  "id": "doc1",
+  "contents": "www.url.com\ntitle\nthis is the contents.\ndocument expansion"
+}
+
+- make sure all contents are without \n \r etc
+- make sure that there are "id and "contents"
+
+https://github.com/castorini/pyserini/blob/master/docs/usage-index.md#building-a-dense-vector-index
